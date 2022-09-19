@@ -1,14 +1,19 @@
 <template>
 
-  <h1>Calculadora</h1>
+  <div class="w-screen h-screen bg-gray-400 flex items-center justify-center">
+    <Calculator />
+  </div>
 
 </template>
 
 <script>
 import './assets/tailwind.css'
 
-export default {
 
+import Calculator from "./components/Calculator.vue";
+
+export default {
+  components: {Calculator}
 }
 
 
