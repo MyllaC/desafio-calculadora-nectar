@@ -1,13 +1,30 @@
 <template>
   <button
-      class="w-full border border-blue-500 rounded text-grayblue-50 bg-grayscale-white border border-grayblue-10">
-    <slot></slot>
+      :class="`button button__${color}`" @click="onClick">
+    {{value}}
   </button>
 </template>
 
 <script>
+import './style.sass'
+
 export default {
-  name: "ButtonBase"
+  name: "ButtonBase",
+  props: {
+    color: {
+      type: String,
+      default: 'number',
+      validator(value) {
+        return ['number', 'operation', 'zero', 'point', 'symbol']
+      }
+    },
+    value: ''
+  },
+  methods: {
+    onClick() {
+      this.$emit("buttonClicked", this.value)
+    }
+  }
 }
 </script>
 

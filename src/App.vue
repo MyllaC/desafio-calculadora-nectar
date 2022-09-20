@@ -1,6 +1,7 @@
 <template>
 
-  <div class="w-screen h-screen bg-gray-400 flex items-center justify-center">
+  <div
+      class="w-screen h-screen bg-grayscale-5 flex items-center justify-center">
     <Calculator />
   </div>
 
