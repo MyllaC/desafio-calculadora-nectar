@@ -1,5 +1,5 @@
 <template>
-  <div class="flex space-x-4 items-center justify-center">
+  <div class="flex space-x-10 items-center justify-center">
     <div
         class="flex flex-wrap w-[250px] h-[180px] items-center justify-center">
       <div class="flex w-full">
