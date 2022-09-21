@@ -1,12 +1,12 @@
 <template>
-  <div class="flex space-x-2 items-center justify-center">
+  <div class="flex space-x-4 items-center justify-center">
     <div
         class="flex flex-wrap w-[250px] h-[180px] items-center justify-center">
       <div class="flex w-full">
-        <ButtonBase color="symbol" value="C" @buttonClicked="fnDelete"/>
+        <ButtonBase color="symbol" value="C" @buttonClicked="fnClear"/>
         <ButtonBase color="symbol" value="(" @buttonClicked="fn"/>
         <ButtonBase color="symbol" value=")" @buttonClicked="fn"/>
-        <ButtonBase color="operation" value="+" @buttonClicked="fn"/>
+        <ButtonBase color="operation" value="/" @buttonClicked="fn"/>
       </div>
       <div class="flex w-full">
         <ButtonBase value="7" @buttonClicked="fn"/>
@@ -32,10 +32,12 @@
       </div>
     </div>
     <div
-        class="flex flex-wrap w-[280px] h-[180px] items-start justify-start space-y-1 p-10 bg-grayscale-white rounded text-grayblue-70 border border-grayblue-15 cursor-pointer text-base"
+        class="flex flex-col justify-between w-[280px] h-[180px] items-start justify-start space-y-1 bg-grayscale-white rounded border border-grayblue-15 cursor-pointer text-base"
     >
-      {{inputValue}}
-      <span>= {{result}}</span>
+      <p class="p-6">{{data}}</p>
+      <div
+          class="border border-grayblue-15 bg-grayblue-5 w-full h-10 flex items-center pl-2 text-grayblue-70">= {{result}}</div>
+
     </div>
   </div>
 
@@ -49,27 +51,25 @@ export default {
   components: {ButtonBase},
   data() {
     return {
-      inputValue: [],
+      data: '',
       result: ''
     }
   },
   methods: {
     fn(value) {
-      this.inputValue.push(parseInt(value))
-      this.calculator()
+      this.data += value
+      this.addVal(this.data)
     },
-    fnDelete() {
-      this.inputValue = []
-    },
-    calculator() {
-      const initialValue = 0;
 
-      this.result = this.inputValue.reduce(
-          (previousValue, currentValue) => previousValue +
-              currentValue,
-          initialValue)
+    addVal(values) {
+      this.result = eval(values)
+    },
+    fnClear() {
+      this.data = ''
+      this.result = ''
     }
-  }
+  },
+
 }
 </script>
 
